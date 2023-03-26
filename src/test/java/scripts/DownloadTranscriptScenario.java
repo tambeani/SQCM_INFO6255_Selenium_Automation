@@ -1,15 +1,18 @@
 package scripts;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
+import utility.ReadFromExcel;
 
 public class DownloadTranscriptScenario {
 
@@ -23,9 +26,16 @@ public class DownloadTranscriptScenario {
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
 
-	@Test
-	public void downloadTranscripts() throws InterruptedException {
-
+	@DataProvider(name = "DP1")
+	public Object[][] createData() throws IOException {
+		ReadFromExcel readFromeExcel = new ReadFromExcel();
+		Object[][] retObjArr = readFromeExcel.getExcelData("src\\test\\resources\\" + "data.xls", "login");
+		return retObjArr;
+	}
+	
+	@Test(dataProvider = "DP1")
+	public void downloadTranscripts(String user,String pass) throws InterruptedException {
+		
 		// Initialize dependencies
 		StudentHubPOM stdhb = new StudentHubPOM(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
@@ -34,10 +44,10 @@ public class DownloadTranscriptScenario {
 		stdhb.clickOnLogin();
 
 		// TS - 2: Enter username
-		sso.setUsername("tambe.ani");
+		sso.setUsername(user);
 
 		// TS - 2: Enter password
-		sso.setPassword("12121@@ATc.Rtn.");
+		sso.setPassword(pass);
 
 		// TS - 3: Click submit
 		sso.clickOnSubmit();
@@ -54,6 +64,9 @@ public class DownloadTranscriptScenario {
 		
 		// TS - 9: Click on registration
 		stdhb.clickOnAcademicReg();
+		
+		// TS - 10: Click on My Transcripts
+		Thread.sleep(2000);stdhb.clickOnTranscripts();
 		
 	}
 	

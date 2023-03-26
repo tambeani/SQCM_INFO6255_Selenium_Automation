@@ -5,7 +5,7 @@
     <classes>
       <class name="scripts.DownloadTranscriptScenario">
         <methods>
-          <include name="checkLogin"/>
+          <include name="downloadTranscripts"/>
           <include name="setDriver"/>
         </methods>
       </class> <!-- scripts.DownloadTranscriptScenario -->

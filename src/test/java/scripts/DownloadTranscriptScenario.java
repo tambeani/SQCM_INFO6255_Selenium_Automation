@@ -20,7 +20,8 @@ public class DownloadTranscriptScenario {
 
 	@BeforeClass
 	public void setDriver() {
-		System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
+				//"C:\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -29,7 +30,7 @@ public class DownloadTranscriptScenario {
 	@DataProvider(name = "DP1")
 	public Object[][] createData() throws IOException {
 		ReadFromExcel readFromeExcel = new ReadFromExcel();
-		Object[][] retObjArr = readFromeExcel.getExcelData("src\\test\\resources\\" + "data.xls", "login");
+		Object[][] retObjArr = readFromeExcel.getExcelData(System.getenv("EXCEL_PATH")+ "data.xls", "login");
 		return retObjArr;
 	}
 	

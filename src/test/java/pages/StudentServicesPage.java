@@ -25,16 +25,7 @@ public class StudentServicesPage {
 	}
 	public void print() {
 		((JavascriptExecutor)driver).executeScript("window.print()");
-		// press Escape programatically - the print dialog must have focus, obviously
-		Robot r = null;
-		try {
-			r = new Robot();
-		} catch (AWTException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		r.keyPress(KeyEvent.VK_ESCAPE);
-		r.keyRelease(KeyEvent.VK_ESCAPE);
+		
 	}
 	
 }

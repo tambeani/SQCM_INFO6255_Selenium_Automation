@@ -5,14 +5,18 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 // POM for StudentHub
 public class StudentHubPOM {
 
 	private WebDriver driver;
+	private WebDriverWait wait;
 
 	public StudentHubPOM(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 30);
 	}
 
 	// web elements
@@ -34,18 +38,22 @@ public class StudentHubPOM {
 	}
 
 	public void onClose() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("*")));
 		driver.findElement(By.xpath("*")).sendKeys(Keys.ESCAPE);;
 	}
 
 	public void clickOnResources() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnResources));
 		driver.findElement(btnResources).click();
 	}
 
 	public void clickOnAcademicReg() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAcademicReg));
 		driver.findElement(btnAcademicReg).click();
 	}
 	
 	public void clickOnTranscripts() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnMyTranscripts));
 		driver.findElement(btnMyTranscripts).click();
 	}
 

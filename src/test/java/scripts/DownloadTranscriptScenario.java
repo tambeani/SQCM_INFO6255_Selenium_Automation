@@ -1,21 +1,28 @@
 package scripts;
 
+import java.awt.AWTException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.google.gson.Gson;
+
 import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
 import pages.StudentServicesPage;
-import utility.PasswordEncoder;
+import utility.PasswordDecoder;
 import utility.ReadFromExcel;
 import utility.WindowSwitching;
 
@@ -45,18 +52,19 @@ public class DownloadTranscriptScenario {
 		sso.setUsername(user);
 
 		// Enter password
-		sso.setPassword(PasswordEncoder.decode(pass));
+		sso.setPassword(PasswordDecoder.decode(pass));
 
 		// Click submit
 		sso.clickOnSubmit();
-		
+
 		// Loading StudentHub
-        sso.setDontShowAgain();sso.clickOnYes();
-		
+		sso.setDontShowAgain();
+		sso.clickOnYes();
+
 	}
 
 	@Test(dataProvider = "DP1")
-	public void downloadTranscripts(String user, String pass) throws InterruptedException {
+	public void downloadTranscripts(String user, String pass) throws InterruptedException, AWTException, IOException {
 
 		// -------------- Initialize dependencies ---------------------
 		StudentHubPOM stdhb = new StudentHubPOM(driver);
@@ -65,7 +73,8 @@ public class DownloadTranscriptScenario {
 
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub
-		stdhb.clickOnLogin();SSOLogin(user, pass);
+		stdhb.clickOnLogin();
+		SSOLogin(user, pass);
 
 		// TS - 2: Click on close
 		stdhb.onClose();
@@ -78,13 +87,16 @@ public class DownloadTranscriptScenario {
 
 		// TS - 5: Click on My Transcripts
 		stdhb.clickOnTranscripts();
-		
-		// TS - 6: Click on submit
-		windowSwitching.changeWindow();Thread.sleep(2000);srvStd.clickOnSubmit();
-		
+
+		// TS - 6: Switch to new window and click on submit
+		windowSwitching.changeWindow();
+		srvStd.clickOnSubmit();
+
 		// TS - 7: Print the webpage
 		srvStd.print();
 
+		// TS - 8: Close window
+		driver.close();
 	}
 
 }

@@ -12,8 +12,10 @@ import org.testng.annotations.Test;
 import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
+import pages.StudentServicesPage;
 import utility.PasswordEncoder;
 import utility.ReadFromExcel;
+import utility.WindowSwitching;
 
 public class DownloadTranscriptScenario {
 
@@ -24,51 +26,64 @@ public class DownloadTranscriptScenario {
 		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@DataProvider(name = "DP1")
 	public Object[][] createData() throws IOException {
 		ReadFromExcel readFromeExcel = new ReadFromExcel();
-		Object[][] retObjArr = readFromeExcel.getExcelData(System.getenv("EXCEL_PATH")+ "data.xls", "login");
+		Object[][] retObjArr = readFromeExcel.getExcelData(System.getenv("EXCEL_PATH") + "data.xls", "login");
 		return retObjArr;
 	}
-	
-	@Test(dataProvider = "DP1")
-	public void downloadTranscripts(String user,String pass) throws InterruptedException {
-		
-		// Initialize dependencies
-		StudentHubPOM stdhb = new StudentHubPOM(driver);
+
+	public void SSOLogin(String user, String pass) throws InterruptedException {
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
 
-		// TS - 1: Load studenthub
-		stdhb.clickOnLogin();
-
-		// TS - 2: Enter username
+		// Enter username
 		sso.setUsername(user);
 
-		// TS - 2: Enter password
+		// Enter password
 		sso.setPassword(PasswordEncoder.decode(pass));
 
-		// TS - 3: Click submit
+		// Click submit
 		sso.clickOnSubmit();
-		
+
 		// Loading StudentHub
 		Thread.sleep(10000);sso.setDontShowAgain();
 		Thread.sleep(10000);sso.clickOnYes();
 		
-		// TS - 7: Click on close
+	}
+
+	@Test(dataProvider = "DP1")
+	public void downloadTranscripts(String user, String pass) throws InterruptedException {
+
+		// -------------- Initialize dependencies ---------------------
+		StudentHubPOM stdhb = new StudentHubPOM(driver);
+		WindowSwitching windowSwitching = new WindowSwitching(driver);
+		StudentServicesPage srvStd = new StudentServicesPage(driver);
+
+		// -------------------- Begin TC -------------------------------
+		// TS - 1: Load studenthub
+		stdhb.clickOnLogin();SSOLogin(user, pass);
+
+		// TS - 2: Click on close
 		Thread.sleep(10000);stdhb.onClose();
-		
-		// TS - 8: Click on resources
-		stdhb.clickOnResources();
-		
-		// TS - 9: Click on registration
-		stdhb.clickOnAcademicReg();
-		
-		// TS - 10: Click on My Transcripts
+
+		// TS - 3: Click on resources
+		Thread.sleep(2000);stdhb.clickOnResources();
+
+		// TS - 4: Click on registration
+		Thread.sleep(2000);stdhb.clickOnAcademicReg();
+
+		// TS - 5: Click on My Transcripts
 		Thread.sleep(2000);stdhb.clickOnTranscripts();
 		
+		// TS - 6: Click on submit
+		windowSwitching.changeWindow();Thread.sleep(2000);srvStd.clickOnSubmit();
+		
+		// TS - 7: Print the webpage
+		srvStd.print();
+
 	}
-	
+
 }

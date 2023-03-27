@@ -36,10 +36,19 @@ public class Workday {
 	public void btnOfcStuEmp() {
 		driver.findElement(btnOfcStuEmp).click();
 	}
+   
+	{
+	        System.out.println( "Before Student Login" );
+	}
 	
 	public void btnStudent() {
 		driver.findElement(btnStudent).click();
 	}
+	
+	public void main( String[] args )
+	   {
+		        System.out.println( "After student login" );
+	    } 
 	
 	public void btnMyJobMail() {
 		driver.findElement(btnMyJobMail).click();

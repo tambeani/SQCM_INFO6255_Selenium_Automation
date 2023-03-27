@@ -2,13 +2,17 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SingleSignOnPOM {
 	
-	WebDriver driver;
+	private WebDriver driver;
+	private WebDriverWait wait;
 	public SingleSignOnPOM(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 30);
 	}
 	
 	// ----------------------- Elements -----------------------------------
@@ -50,14 +54,21 @@ public class SingleSignOnPOM {
 		driver.findElement(chkRememberMe).click();
 	}
 	public void setDontShowAgain() {
+		wait.until(ExpectedConditions.elementToBeClickable(this.getDontShowAgainButton()));
 		driver.findElement(chkDontShow).click();
 	}
 	public void clickOnSendPush() {
 		driver.findElement(btnSendPush).click();
 	}
 	public void clickOnYes() {
+		wait.until(ExpectedConditions.elementToBeClickable(this.getYesButton()));
 		driver.findElement(btnYes).click();
 	}
-
+	public By getDontShowAgainButton() {
+		return chkDontShow;
+	}
+	public By getYesButton() {
+		return btnYes;
+	}
 	
 }

@@ -9,13 +9,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
-import pages.StudentHubPOM;
+import pages.Workday;
 import utility.ReadFromExcel;
 
-public class DownloadTranscriptScenario {
-
+public class WorkdayScenario {
+	
 	private WebDriver driver;
 
 	@BeforeClass
@@ -34,14 +33,14 @@ public class DownloadTranscriptScenario {
 	}
 	
 	@Test(dataProvider = "DP1")
-	public void downloadTranscripts(String user,String pass) throws InterruptedException {
+	public void workdaylogin(String user,String pass) throws InterruptedException {
 		
 		// Initialize dependencies
-		StudentHubPOM stdhb = new StudentHubPOM(driver);
+		Workday stdwd = new Workday(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
 
 		// TS - 1: Load canvas
-		stdhb.clickOnLogin();
+		stdwd.clickOnLogin();
 
 		// TS - 2: Enter username
 		sso.setUsername(user);
@@ -52,22 +51,5 @@ public class DownloadTranscriptScenario {
 		// TS - 3: Click submit
 		sso.clickOnSubmit();
 		
-		// Loading StudentHub
-		Thread.sleep(10000);sso.setDontShowAgain();
-		Thread.sleep(10000);sso.clickOnYes();
-		
-		// TS - 7: Click on close
-		Thread.sleep(10000);stdhb.onClose();
-		
-		// TS - 8: Click on resources
-		stdhb.clickOnResources();
-		
-		// TS - 9: Click on registration
-		stdhb.clickOnAcademicReg();
-		
-		// TS - 10: Click on My Transcripts
-		Thread.sleep(2000);stdhb.clickOnTranscripts();
-		
 	}
-	
 }

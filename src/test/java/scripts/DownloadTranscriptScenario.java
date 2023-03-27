@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
+import utility.PasswordEncoder;
 import utility.ReadFromExcel;
 
 public class DownloadTranscriptScenario {
@@ -21,7 +22,6 @@ public class DownloadTranscriptScenario {
 	@BeforeClass
 	public void setDriver() {
 		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
-				//"C:\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -41,14 +41,14 @@ public class DownloadTranscriptScenario {
 		StudentHubPOM stdhb = new StudentHubPOM(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
 
-		// TS - 1: Load canvas
+		// TS - 1: Load studenthub
 		stdhb.clickOnLogin();
 
 		// TS - 2: Enter username
 		sso.setUsername(user);
 
 		// TS - 2: Enter password
-		sso.setPassword(pass);
+		sso.setPassword(PasswordEncoder.decode(pass));
 
 		// TS - 3: Click submit
 		sso.clickOnSubmit();

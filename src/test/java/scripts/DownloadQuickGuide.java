@@ -56,13 +56,10 @@ public class DownloadQuickGuide {
 		// TS - 3: Click submit
 		sso.clickOnSubmit();
 		
-		Thread.sleep(10000);
-		
 		// TS - 4: Click on Classroom Link
 		clsguide.clickOnClassroomLink();
 		
-		Thread.sleep(10000);
-		
+		// TS - 5 : Click On Quick Guide PDF link
 		clsguide.openQuickGuidePDF();
 		
 	}

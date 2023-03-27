@@ -1,2 +1,3 @@
 /target/
-/*.xls
+*.xls
+/test-output/

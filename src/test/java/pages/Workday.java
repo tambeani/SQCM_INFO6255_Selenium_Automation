@@ -45,7 +45,6 @@ public class Workday {
 		driver.findElement(btnStudent).click();
 	}
 	
-	public void main( String[] args )
 	   {
 		        System.out.println( "After student login" );
 	    } 

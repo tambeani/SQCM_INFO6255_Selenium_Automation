@@ -2,3 +2,5 @@
 *.xls
 test-output/
 myTranscript.pdf
+screenshot/*.png
+

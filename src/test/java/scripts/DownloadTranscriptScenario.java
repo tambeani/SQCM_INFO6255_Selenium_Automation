@@ -2,38 +2,30 @@ package scripts;
 
 import java.awt.AWTException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import com.google.gson.Gson;
-
-import pages.CanvasPOM;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
 import pages.StudentServicesPage;
 import utility.PasswordDecoder;
 import utility.ReadFromExcel;
+import utility.Screenshot;
 import utility.WindowSwitching;
 
 public class DownloadTranscriptScenario {
 
 	private WebDriver driver;
+	private Screenshot SS;
 
 	@BeforeClass
 	public void setDriver() {
 		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
 		driver = new ChromeDriver();
+		SS = new Screenshot(driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
@@ -74,7 +66,9 @@ public class DownloadTranscriptScenario {
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub
 		stdhb.clickOnLogin();
+		SS.capture("BEFORE_LOGIN");
 		SSOLogin(user, pass);
+		SS.capture("AFTER_LOGIN");
 
 		// TS - 2: Click on close
 		stdhb.onClose();

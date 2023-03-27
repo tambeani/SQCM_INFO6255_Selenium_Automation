@@ -33,7 +33,6 @@ public class DownloadDatasetScenario {
 		// TS - 1: Go to the webpage
 		dsd.loadPage();
 
-		
 		//TS - 2: Click Digital Repository Service
 		Thread.sleep(2000);
 		dsd.btnDrs();

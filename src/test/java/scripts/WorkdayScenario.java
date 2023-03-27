@@ -51,5 +51,18 @@ public class WorkdayScenario {
 		// TS - 3: Click submit
 		sso.clickOnSubmit();
 		
+		//TS - 4: Click Skip
+		Thread.sleep(2000);
+		stdwd.btnSkip();
+		
+		//TS - 5: Click Office Student Employment
+		stdwd.btnOfcStuEmp();
+		
+		//TS - 6: Click Students
+		stdwd.btnStudent();
+		Thread.sleep(2000);
+		
+		//TS - 7: Click My Job Mail
+		stdwd.btnMyJobMail();
 	}
 }

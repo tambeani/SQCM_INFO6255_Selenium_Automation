@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-26T23:12:25 EDT" name="Default suite" finished-at="2023-03-26T23:12:57 EDT" duration-ms="32072">
+  <suite started-at="2023-03-27T12:57:26 EDT" name="Default suite" finished-at="2023-03-27T12:57:58 EDT" duration-ms="31921">
     <groups>
     </groups>
-    <test started-at="2023-03-26T23:12:25 EDT" name="Default test" finished-at="2023-03-26T23:12:57 EDT" duration-ms="32072">
+    <test started-at="2023-03-27T12:57:26 EDT" name="Default test" finished-at="2023-03-27T12:57:58 EDT" duration-ms="31921">
       <class name="scripts.WorkdayScenario">
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:scripts.WorkdayScenario@515aebb0]" started-at="2023-03-26T23:12:25 EDT" name="setDriver" finished-at="2023-03-26T23:12:28 EDT" duration-ms="2627" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:scripts.WorkdayScenario@515aebb0]" started-at="2023-03-27T12:57:26 EDT" name="setDriver" finished-at="2023-03-27T12:57:28 EDT" duration-ms="2616" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="workdaylogin(java.lang.String,java.lang.String)[pri:0, instance:scripts.WorkdayScenario@515aebb0]" started-at="2023-03-26T23:12:28 EDT" name="workdaylogin" data-provider="DP1" finished-at="2023-03-26T23:12:57 EDT" duration-ms="28963" status="FAIL">
+        <test-method signature="workdaylogin(java.lang.String,java.lang.String)[pri:0, instance:scripts.WorkdayScenario@515aebb0]" started-at="2023-03-27T12:57:29 EDT" name="workdaylogin" data-provider="DP1" finished-at="2023-03-27T12:57:58 EDT" duration-ms="29028" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -26,30 +26,30 @@
           </params>
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a/span"}
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a"}
   (Session info: chrome=111.0.5563.110)
   (Driver info: chromedriver=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}),platform=Mac OS X 13.2.1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 10.01 seconds
+Command duration or timeout: 10.02 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
 System info: host: 'Rajats-MacBook-Pro.local', ip: '127.0.0.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '13.2.1', java.version: '17.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{mobileEmulationEnabled=false, timeouts={implicit=0, pageLoad=300000, script=30000}, hasTouchScreen=false, platform=MAC, acceptSslCerts=false, goog:chromeOptions={debuggerAddress=localhost:62286}, webauthn:extension:credBlob=true, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, setWindowRect=true, webauthn:extension:largeBlob=true, unexpectedAlertBehaviour=ignore, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}), userDataDir=/var/folders/n2/nt1c2t2j6pz_j1lw1xsbmrpm0000gn/T/.com.google.Chrome.Zs7bCk}, takesHeapSnapshot=true, pageLoadStrategy=normal, strictFileInteractability=false, databaseEnabled=false, handlesAlerts=true, version=111.0.5563.110, browserConnectionEnabled=false, proxy={}, nativeEvents=true, webauthn:extension:minPinLength=true, webauthn:extension:prf=true, locationContextEnabled=true, cssSelectorsEnabled=true, webauthn:virtualAuthenticators=true}]
-Session ID: a01d94957c62819717be802fdb4afbf0
-*** Element info: {Using=xpath, value=/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a/span}]]>
+Capabilities [{mobileEmulationEnabled=false, timeouts={implicit=0, pageLoad=300000, script=30000}, hasTouchScreen=false, platform=MAC, acceptSslCerts=false, goog:chromeOptions={debuggerAddress=localhost:57511}, webauthn:extension:credBlob=true, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, setWindowRect=true, webauthn:extension:largeBlob=true, unexpectedAlertBehaviour=ignore, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}), userDataDir=/var/folders/n2/nt1c2t2j6pz_j1lw1xsbmrpm0000gn/T/.com.google.Chrome.7Zfw1R}, takesHeapSnapshot=true, pageLoadStrategy=normal, strictFileInteractability=false, databaseEnabled=false, handlesAlerts=true, version=111.0.5563.110, browserConnectionEnabled=false, proxy={}, nativeEvents=true, webauthn:extension:minPinLength=true, webauthn:extension:prf=true, locationContextEnabled=true, cssSelectorsEnabled=true, webauthn:virtualAuthenticators=true}]
+Session ID: 4255a62a03626cb442618d2f08e6c599
+*** Element info: {Using=xpath, value=/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a/span"}
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a"}
   (Session info: chrome=111.0.5563.110)
   (Driver info: chromedriver=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}),platform=Mac OS X 13.2.1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 10.01 seconds
+Command duration or timeout: 10.02 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
 System info: host: 'Rajats-MacBook-Pro.local', ip: '127.0.0.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '13.2.1', java.version: '17.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{mobileEmulationEnabled=false, timeouts={implicit=0, pageLoad=300000, script=30000}, hasTouchScreen=false, platform=MAC, acceptSslCerts=false, goog:chromeOptions={debuggerAddress=localhost:62286}, webauthn:extension:credBlob=true, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, setWindowRect=true, webauthn:extension:largeBlob=true, unexpectedAlertBehaviour=ignore, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}), userDataDir=/var/folders/n2/nt1c2t2j6pz_j1lw1xsbmrpm0000gn/T/.com.google.Chrome.Zs7bCk}, takesHeapSnapshot=true, pageLoadStrategy=normal, strictFileInteractability=false, databaseEnabled=false, handlesAlerts=true, version=111.0.5563.110, browserConnectionEnabled=false, proxy={}, nativeEvents=true, webauthn:extension:minPinLength=true, webauthn:extension:prf=true, locationContextEnabled=true, cssSelectorsEnabled=true, webauthn:virtualAuthenticators=true}]
-Session ID: a01d94957c62819717be802fdb4afbf0
-*** Element info: {Using=xpath, value=/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a/span}
+Capabilities [{mobileEmulationEnabled=false, timeouts={implicit=0, pageLoad=300000, script=30000}, hasTouchScreen=false, platform=MAC, acceptSslCerts=false, goog:chromeOptions={debuggerAddress=localhost:57511}, webauthn:extension:credBlob=true, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, setWindowRect=true, webauthn:extension:largeBlob=true, unexpectedAlertBehaviour=ignore, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}), userDataDir=/var/folders/n2/nt1c2t2j6pz_j1lw1xsbmrpm0000gn/T/.com.google.Chrome.7Zfw1R}, takesHeapSnapshot=true, pageLoadStrategy=normal, strictFileInteractability=false, databaseEnabled=false, handlesAlerts=true, version=111.0.5563.110, browserConnectionEnabled=false, proxy={}, nativeEvents=true, webauthn:extension:minPinLength=true, webauthn:extension:prf=true, locationContextEnabled=true, cssSelectorsEnabled=true, webauthn:virtualAuthenticators=true}]
+Session ID: 4255a62a03626cb442618d2f08e6c599
+*** Element info: {Using=xpath, value=/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -62,8 +62,8 @@ at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:3
 at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:449)
 at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-at pages.Workday.btnStudent(Workday.java:40)
-at scripts.WorkdayScenario.workdaylogin(WorkdayScenario.java:62)
+at pages.Workday.btnStudent(Workday.java:41)
+at scripts.WorkdayScenario.workdaylogin(WorkdayScenario.java:66)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

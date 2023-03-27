@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import pages.SingleSignOnPOM;
 import pages.Workday;
 import utility.ReadFromExcel;
+import pages.WorkdayPOM;
 
 public class WorkdayScenario {
 	
@@ -38,6 +39,7 @@ public class WorkdayScenario {
 		// Initialize dependencies
 		Workday stdwd = new Workday(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
+		WorkdayPOM id = new WorkdayPOM(driver);
 
 		// TS - 1: Load canvas
 		stdwd.clickOnLogin();
@@ -58,11 +60,21 @@ public class WorkdayScenario {
 		//TS - 5: Click Office Student Employment
 		stdwd.btnOfcStuEmp();
 		
+		
 		//TS - 6: Click Students
+		Thread.sleep(3000);
 		stdwd.btnStudent();
-		Thread.sleep(2000);
 		
 		//TS - 7: Click My Job Mail
 		stdwd.btnMyJobMail();
+		
+		//TS - 8: Enter UserName
+		id.setUsername(user);
+		
+		//TS -9: Enter Password
+		id.setPassword(pass);
+		
+		//TS -10 : Click Login
+		stdwd.btnLogin();
 	}
 }

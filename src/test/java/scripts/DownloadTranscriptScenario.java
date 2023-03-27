@@ -66,9 +66,9 @@ public class DownloadTranscriptScenario {
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub
 		stdhb.clickOnLogin();
-		SS.capture("BEFORE_LOGIN");
+		SS.capture(this.getClass().getSimpleName()+"_BEFORE_LOGIN");
 		SSOLogin(user, pass);
-		SS.capture("AFTER_LOGIN");
+		SS.capture(this.getClass().getSimpleName()+"_AFTER_LOGIN");
 
 		// TS - 2: Click on close
 		stdhb.onClose();
@@ -84,13 +84,15 @@ public class DownloadTranscriptScenario {
 
 		// TS - 6: Switch to new window and click on submit
 		windowSwitching.changeWindow();
+		SS.capture(this.getClass().getSimpleName()+"_BEFORE_SUBMIT");
 		srvStd.clickOnSubmit();
+		SS.capture(this.getClass().getSimpleName()+"_AFTER_SUBMIT");
 
 		// TS - 7: Print the webpage
 		srvStd.print();
 
 		// TS - 8: Close window
-		driver.close();
+		driver.quit();
 	}
 
 }

@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -47,10 +49,9 @@ public class DownloadTranscriptScenario {
 
 		// Click submit
 		sso.clickOnSubmit();
-
+		
 		// Loading StudentHub
-		Thread.sleep(10000);sso.setDontShowAgain();
-		Thread.sleep(10000);sso.clickOnYes();
+        sso.setDontShowAgain();sso.clickOnYes();
 		
 	}
 
@@ -67,16 +68,16 @@ public class DownloadTranscriptScenario {
 		stdhb.clickOnLogin();SSOLogin(user, pass);
 
 		// TS - 2: Click on close
-		Thread.sleep(10000);stdhb.onClose();
+		stdhb.onClose();
 
 		// TS - 3: Click on resources
-		Thread.sleep(2000);stdhb.clickOnResources();
+		stdhb.clickOnResources();
 
 		// TS - 4: Click on registration
-		Thread.sleep(2000);stdhb.clickOnAcademicReg();
+		stdhb.clickOnAcademicReg();
 
 		// TS - 5: Click on My Transcripts
-		Thread.sleep(2000);stdhb.clickOnTranscripts();
+		stdhb.clickOnTranscripts();
 		
 		// TS - 6: Click on submit
 		windowSwitching.changeWindow();Thread.sleep(2000);srvStd.clickOnSubmit();

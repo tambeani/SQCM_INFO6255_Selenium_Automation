@@ -13,6 +13,8 @@ import utility.ReadFromExcel;
 import pages.ClassroomQuickGuide;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
+import utility.PasswordEncoder;
+import utility.ReadFromExcel;
 
 public class DownloadQuickGuide {
 	
@@ -49,7 +51,7 @@ public class DownloadQuickGuide {
 		sso.setUsername(user);
 
 		// TS - 2: Enter password
-		sso.setPassword(pass);
+		sso.setPassword(PasswordEncoder.decode(pass));
 
 		// TS - 3: Click submit
 		sso.clickOnSubmit();

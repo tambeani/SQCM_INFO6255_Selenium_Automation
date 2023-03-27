@@ -11,7 +11,7 @@ public class PasswordEncoder {
 	}
 	
 	public static String decode(String text) {
-		byte[] decodeBytes = Base64.getDecoder().decode("MTIxMjFAQEFUYy5SdG4u");
+		byte[] decodeBytes = Base64.getDecoder().decode(text);
 		String decoded = new String(decodeBytes);
 		return decoded;
 	}

@@ -8,10 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class DatasetPOM {
+public class DatasetPOM extends BasePOM{
+	
 	private WebDriver driver;
 	private WebDriverWait wait;
+	
 	public DatasetPOM(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
@@ -40,18 +43,18 @@ public class DatasetPOM {
 	
 	public void btnDrs() {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDrs));
-		driver.findElement(btnDrs).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDrs),"click","");
 	}
 
 	public void btnDataset() {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDataset));
-        	driver.findElement(btnDataset).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDataset),"click","");
         
 	}
 	
 	public void btnDownload() {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDownload));
-		driver.findElement(btnDownload).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDownload),"click","");
 	}
 	
 }

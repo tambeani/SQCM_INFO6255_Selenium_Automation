@@ -38,7 +38,7 @@ public class DownloadQuickGuide {
 	
 	
 	@Test(dataProvider = "DP1")
-	public void downloadQuickGuide(String user,String pass) throws InterruptedException {
+	public void downloadQuickGuide(String user,String pass) throws InterruptedException, IOException {
 		
 		// Initialize dependencies
 		ClassroomQuickGuide clsguide = new ClassroomQuickGuide(driver);

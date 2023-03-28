@@ -21,11 +21,12 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 
 import utility.ToPDF;
 
-public class StudentServicesPage {
+public class StudentServicesPOM extends BasePOM{
 
 	private WebDriver driver;
 	private WebDriverWait wait;
-	public StudentServicesPage(WebDriver driver) {
+	public StudentServicesPOM(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
@@ -36,12 +37,13 @@ public class StudentServicesPage {
 	By eleBody = By.xpath("/html/body");
 	
 	// --------------- Function ---------------
-	public void clickOnSubmit() {
+	public void clickOnSubmit() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnSubmit));
-		driver.findElement(btnSubmit).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSubmit),"click","");
 	}
 	public void print() throws AWTException, InterruptedException, IOException {
-		ToPDF.saveToPdf(driver.findElement(eleBody).getAttribute("innerHTML"),"myTranscript");
+		String html = executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(eleBody),"getAttribute","innerHTML");
+		ToPDF.saveToPdf(html,"myTranscript");
 	}
 	
 }

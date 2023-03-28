@@ -1,15 +1,19 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class DatasetPOM {
 	private WebDriver driver;
-
+	private WebDriverWait wait;
 	public DatasetPOM(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 30);
 	}
 
 	// web elements
@@ -35,15 +39,18 @@ public class DatasetPOM {
 
 	
 	public void btnDrs() {
+		wait.until(ExpectedConditions.elementToBeClickable(btnDrs));
 		driver.findElement(btnDrs).click();
 	}
 
 	public void btnDataset() {
-        driver.findElement(btnDataset).click();
+		wait.until(ExpectedConditions.elementToBeClickable(btnDataset));
+        	driver.findElement(btnDataset).click();
         
 	}
 	
 	public void btnDownload() {
+		wait.until(ExpectedConditions.elementToBeClickable(btnDownload));
 		driver.findElement(btnDownload).click();
 	}
 	

@@ -1,5 +1,7 @@
 package pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,12 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 // POM for StudentHub
-public class StudentHubPOM {
+public class StudentHubPOM extends BasePOM{
 
 	private WebDriver driver;
 	private WebDriverWait wait;
 
 	public StudentHubPOM(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
@@ -32,29 +35,29 @@ public class StudentHubPOM {
 		this.driver.get(URL);
 	}
 
-	public void clickOnLogin() {
+	public void clickOnLogin() throws IOException {
 		hitURL();
-		driver.findElement(login).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(login),"click","");
 	}
 
-	public void onClose() {
+	public void onClose() throws IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(btnClose));
-		driver.findElement(btnClose).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnClose),"click","");
 	}
 
-	public void clickOnResources() {
+	public void clickOnResources() throws IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(btnResources));
-		driver.findElement(btnResources).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnResources),"click","");
 	}
 
-	public void clickOnAcademicReg() {
+	public void clickOnAcademicReg() throws IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAcademicReg));
-		driver.findElement(btnAcademicReg).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAcademicReg),"click","");
 	}
 
-	public void clickOnTranscripts() {
+	public void clickOnTranscripts() throws IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(btnMyTranscripts));
-		driver.findElement(btnMyTranscripts).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnMyTranscripts),"click","");
 	}
 
 }

@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
-import pages.StudentServicesPage;
+import pages.StudentServicesPOM;
 import utility.PasswordDecoder;
 import utility.ReadFromExcel;
 import utility.Screenshot;
@@ -37,7 +37,7 @@ public class DownloadTranscriptScenario {
 		return retObjArr;
 	}
 
-	public void SSOLogin(String user, String pass) throws InterruptedException {
+	public void SSOLogin(String user, String pass) throws InterruptedException, IOException {
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
 
 		// Enter username
@@ -61,14 +61,12 @@ public class DownloadTranscriptScenario {
 		// -------------- Initialize dependencies ---------------------
 		StudentHubPOM stdhb = new StudentHubPOM(driver);
 		WindowSwitching windowSwitching = new WindowSwitching(driver);
-		StudentServicesPage srvStd = new StudentServicesPage(driver);
+		StudentServicesPOM srvStd = new StudentServicesPOM(driver);
 
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub
 		stdhb.clickOnLogin();
-		SS.capture(this.getClass().getSimpleName()+"_BEFORE_LOGIN");
 		SSOLogin(user, pass);
-		SS.capture(this.getClass().getSimpleName()+"_AFTER_LOGIN");
 
 		// TS - 2: Click on close
 		stdhb.onClose();
@@ -84,9 +82,7 @@ public class DownloadTranscriptScenario {
 
 		// TS - 6: Switch to new window and click on submit
 		windowSwitching.changeWindow();
-		SS.capture(this.getClass().getSimpleName()+"_BEFORE_SUBMIT");
 		srvStd.clickOnSubmit();
-		SS.capture(this.getClass().getSimpleName()+"_AFTER_SUBMIT");
 
 		// TS - 7: Print the webpage
 		srvStd.print();

@@ -19,7 +19,7 @@ public class WorkdayScenario {
 	private Screenshot SS;
 	@BeforeClass
 	public void setDriver() {
-		System.setProperty("webdriver.chrome.driver", "/Users/rajatrao/Downloads/chromedriver_mac64/chromedriver");
+		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
 		driver = new ChromeDriver();
 		SS = new Screenshot(driver);
 		driver.manage().window().maximize();
@@ -29,7 +29,7 @@ public class WorkdayScenario {
 	@DataProvider(name = "DP1")
 	public Object[][] createData() throws IOException {
 		ReadFromExcel readFromeExcel = new ReadFromExcel();
-		Object[][] retObjArr = readFromeExcel.getExcelData("src/test/resources/" + "data.xls", "login");
+		Object[][] retObjArr = readFromeExcel.getExcelData(System.getenv("EXCEL_PATH") + "data.xls", "login");
 		return retObjArr;
 	}
 	

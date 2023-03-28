@@ -2,67 +2,74 @@ package scripts;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import pages.CalendarPOM;
+import utility.PasswordDecoder;
 import utility.ReadFromExcel;
 import pages.ClassroomQuickGuide;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
-import utility.PasswordDecoder;
 import utility.ReadFromExcel;
 
-public class DownloadQuickGuide {
-	
+public class AddTaskToCalendar {
+
 	private WebDriver driver;
 
 	@BeforeClass
 	public void setDriver() {
 		System.setProperty("webdriver.chrome.driver", System.getenv("DRIVER_PATH"));
-				//"C:\\driver\\chromedriver.exe");
+		// "C:\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@DataProvider(name = "DP1")
 	public Object[][] createData() throws IOException {
 		ReadFromExcel readFromeExcel = new ReadFromExcel();
-		Object[][] retObjArr = readFromeExcel.getExcelData(System.getenv("EXCEL_PATH")+ "data.xls", "login");
+		String filePath = System.getenv("EXCEL_PATH") + "data.xls";
+		String sheetName = "calendar";
+		Object[][] retObjArr = readFromeExcel.getExcelData(filePath, sheetName);
 		return retObjArr;
 	}
-	
+
 	@Test(dataProvider = "DP1")
-	public void downloadQuickGuide(String user,String pass) throws InterruptedException, IOException {
-		
+	public void addTaskToCalendar(String user, String pass, String title, String date, String time, String calender,
+			String details) throws InterruptedException, IOException {
+
 		// Initialize dependencies
-		ClassroomQuickGuide clsguide = new ClassroomQuickGuide(driver);
+		CalendarPOM calendar = new CalendarPOM(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
-
+		
 		// TS - 1: Load canvas
-		clsguide.clickOnLogin();
-
+		calendar.clickOnLogin();
 		// TS - 2: Enter username
 		sso.setUsername(user);
-
 		// TS - 2: Enter password
 		sso.setPassword(PasswordDecoder.decode(pass));
-
 		// TS - 3: Click submit
 		sso.clickOnSubmit();
-		
-		// TS - 4: Click on Classroom Link
-		clsguide.clickOnClassroomLink();
-		
-		// TS - 5 : Click On Quick Guide PDF link
-		clsguide.openQuickGuidePDF();
-		
-		driver.close();
-		
+
+		// TS - 4: Click on calendarBtn
+		calendar.clickOnCalendarButton();
+
+		// TS- 5: Click on addBtn
+		calendar.clickOnAddButton();
+
+		// TS- 6: Click on todoBtn
+		calendar.clickOnToDoButton();
+
+		// Fill the details from excel sheet
+
+		// TS-7: Click on submit btn
+		calendar.clickOnSubmitBtn();
+
+		// TS- 8: View the To do that is added
+		calendar.clickToViewToDo();
 	}
-	
+
 }

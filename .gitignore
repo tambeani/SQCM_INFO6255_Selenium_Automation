@@ -3,4 +3,5 @@
 test-output/
 myTranscript.pdf
 *.png
+.DS_Store
 

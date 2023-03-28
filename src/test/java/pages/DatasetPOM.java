@@ -1,5 +1,7 @@
 package pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.JavascriptExecutor;
@@ -41,18 +43,18 @@ public class DatasetPOM extends BasePOM{
 	}
 
 	
-	public void btnDrs() {
+	public void btnDrs() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDrs));
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDrs),"click","");
 	}
 
-	public void btnDataset() {
+	public void btnDataset() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDataset));
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDataset),"click","");
         
 	}
 	
-	public void btnDownload() {
+	public void btnDownload() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnDownload));
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnDownload),"click","");
 	}

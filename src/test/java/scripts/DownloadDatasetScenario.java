@@ -34,17 +34,16 @@ public class DownloadDatasetScenario {
 		dsd.loadPage();
 
 		//TS - 2: Click Digital Repository Service
-		Thread.sleep(2000);
 		dsd.btnDrs();
 		ws.changeWindow();
 		DatasetPOM.scrollToBottom(driver);
-		Thread.sleep(2000);
+		
 		
 		//TS - 3: Click Datasets
 		dsd.btnDataset();
 		
 		//TS - 4: Click Zip File
 		dsd.btnDownload();
-		Thread.sleep(2000);
+		
 	}
 }

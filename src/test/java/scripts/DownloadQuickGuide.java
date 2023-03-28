@@ -36,7 +36,6 @@ public class DownloadQuickGuide {
 		return retObjArr;
 	}
 	
-	
 	@Test(dataProvider = "DP1")
 	public void downloadQuickGuide(String user,String pass) throws InterruptedException, IOException {
 		

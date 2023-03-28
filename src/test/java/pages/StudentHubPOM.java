@@ -14,8 +14,8 @@ public class StudentHubPOM extends BasePOM{
 	private WebDriver driver;
 	private WebDriverWait wait;
 
-	public StudentHubPOM(WebDriver driver) {
-		super(driver);
+	public StudentHubPOM(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}

@@ -18,6 +18,7 @@ import utility.WindowSwitching;
 
 public class DownloadTranscriptScenario {
 
+	final String TS_NAME = "TS_DownloadTranscriptScenario";
 	private WebDriver driver;
 	private Screenshot SS;
 
@@ -38,7 +39,7 @@ public class DownloadTranscriptScenario {
 	}
 
 	public void SSOLogin(String user, String pass) throws InterruptedException, IOException {
-		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
+		SingleSignOnPOM sso = new SingleSignOnPOM(driver,TS_NAME);
 
 		// Enter username
 		sso.setUsername(user);
@@ -59,9 +60,9 @@ public class DownloadTranscriptScenario {
 	public void downloadTranscripts(String user, String pass) throws InterruptedException, AWTException, IOException {
 
 		// -------------- Initialize dependencies ---------------------
-		StudentHubPOM stdhb = new StudentHubPOM(driver);
+		StudentHubPOM stdhb = new StudentHubPOM(driver,TS_NAME);
 		WindowSwitching windowSwitching = new WindowSwitching(driver);
-		StudentServicesPOM srvStd = new StudentServicesPOM(driver);
+		StudentServicesPOM srvStd = new StudentServicesPOM(driver,TS_NAME);
 
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub

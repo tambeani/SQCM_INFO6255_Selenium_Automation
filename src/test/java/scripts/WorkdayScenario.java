@@ -13,15 +13,15 @@ import pages.SingleSignOnPOM;
 import pages.Workday;
 import utility.*;
 import pages.WorkdayPOM;
-
 public class WorkdayScenario {
 	
 	private WebDriver driver;
-
+	private Screenshot SS;
 	@BeforeClass
 	public void setDriver() {
 		System.setProperty("webdriver.chrome.driver", "/Users/rajatrao/Downloads/chromedriver_mac64/chromedriver");
 		driver = new ChromeDriver();
+		SS = new Screenshot(driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
@@ -33,8 +33,26 @@ public class WorkdayScenario {
 		return retObjArr;
 	}
 	
+	public void SSOLogin(String user, String pass) throws InterruptedException, IOException {
+		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
+
+		// Enter username
+		sso.setUsername(user);
+
+		// Enter password
+		sso.setPassword(PasswordDecoder.decode(pass));
+
+		// Click submit
+		sso.clickOnSubmit();
+
+		// Loading StudentHub
+		//sso.setDontShowAgain();
+		sso.clickOnYes();
+
+	}
+	
 	@Test(dataProvider = "DP1")
-	public void workdaylogin(String user,String pass) throws InterruptedException {
+	public void workdaylogin(String user,String pass) throws InterruptedException, IOException {
 		
 		// Initialize dependencies
 		Workday stdwd = new Workday(driver);
@@ -47,13 +65,13 @@ public class WorkdayScenario {
 		stdwd.clickOnLogin();
 
 		// TS - 2: Enter username
-		sso.setUsername(user);
+		//sso.setUsername(user);
 
 		// TS - 2: Enter password
-		sso.setPassword(pass);
+		//sso.setPassword(pass);
 
 		// TS - 3: Click submit
-		sso.clickOnSubmit();
+		//sso.clickOnSubmit();
 		
 		//TS - 4: Click Skip
 		Thread.sleep(2000);

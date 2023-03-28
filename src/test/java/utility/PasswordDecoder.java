@@ -2,7 +2,7 @@ package utility;
 
 import java.util.Base64;
 
-public class PasswordEncoder {
+public class PasswordDecoder {
 
 	public static String encode(String text) {
 		byte[] encodedBytes = Base64.getEncoder().encode(text.getBytes());

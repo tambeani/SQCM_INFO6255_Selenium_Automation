@@ -1,5 +1,7 @@
 package pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,17 +9,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Workday {
+public class Workday extends BasePOM{
 	private WebDriver driver;
-
+	private WebDriverWait wait;
+	
 	public Workday(WebDriver driver) {
+		
+		super(driver);
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 30);
 	}
 
 	// web elements
 	final String URL = "https://www.myworkday.com/northeastern/d/inst/13102!CK5mGhIKBggDEMenAhIICgYI1A0Q5wE~*AmKOdsyb7NU~/cacheable-task/23748$4.htmld#backheader=true&TABINDEX=1";
-	By login = By.xpath("//*[@id=\"bySelection\"]/div[2]/div/span");
-	//By btnSkip = By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/a");
+	By login = By.xpath("//*[@id=\\\"bySelection\\\"]/div[2]/div/span");
 	By btnSkip = By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/a");
 	By btnOfcStuEmp = By.xpath("/html/body/div[2]/div/div[2]/div[1]/section/div/div/div/div[1]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div[4]/div[1]/div/div/div[2]/div/div[3]/ul/li/div/div/div");
 	By btnStudent = By.xpath("/html/body/div[3]/div[6]/form/span/div/div/div[4]/div[1]/a");
@@ -45,89 +50,118 @@ public class Workday {
 		this.driver.get(URL);
 	}
 
-	public void clickOnLogin() {
+	public void clickOnLogin() throws IOException {
 		hitURL();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(login),"click","");
 	}
 	
-	public void btnSkip() {
-		driver.findElement(btnSkip).click();
+	public void btnSkip() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnSkip));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSkip),"click","");
+		
+		//driver.findElement(btnSkip).click();
 	}
 	
-	public void btnOfcStuEmp() {
-		driver.findElement(btnOfcStuEmp).click();
+	public void btnOfcStuEmp() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnOfcStuEmp));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnOfcStuEmp),"click","");
+		
+		//driver.findElement(btnOfcStuEmp).click();
 	}
 		
-	public void btnStudent(){
-			driver.findElement(btnStudent).click();
+	public void btnStudent() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnStudent));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnStudent),"click","");	
+		
+		//driver.findElement(btnStudent).click();
 			
 		}
 	
-	public void btnMyJobMail() {
-		driver.findElement(btnMyJobMail).click();
+	public void btnMyJobMail() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnMyJobMail));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnMyJobMail),"click","");
+		
+		//driver.findElement(btnMyJobMail).click();
 	}
 	
-	public void btnAddEmp() {
-		driver.findElement(btnAddEmp).click();
+	public void btnAddEmp() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddEmp));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddEmp),"click","");
 	}
 	
-	public void btnEmpName() {
-		driver.findElement(btnEmpName).click();
+	public void btnEmpName() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnEmpName));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnEmpName),"click","");
 	}
 	
-	public void btnAdd() {
-		driver.findElement(btnAdd).click();
+	public void btnAdd()throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAdd));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAdd),"click","");
 	}
 	
-	public void btnSave() {
-		driver.findElement(btnSave).click();
+	public void btnSave() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddEmp));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddEmp),"click","");
+	}
+		
+	public void btnClose() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnClose));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnClose),"click","");
 	}
 	
-	public void btnClose() {
-		driver.findElement(btnClose).click();
+	public void btnAddCat() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddCat));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddCat),"click","");
 	}
 	
-	public void btnAddCat() {
-		driver.findElement(btnAddCat).click();
+	public void btnCatName() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnCatName));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnCatName),"click","");
 	}
 	
-	public void btnCatName() {
-		driver.findElement(btnCatName).click();
+	public void btnAddCat1() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddCat1));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddCat1),"click","");
 	}
 	
-	public void btnAddCat1() {
-		driver.findElement(btnAddCat1).click();
+	public void btnSaveCat() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnSaveCat));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSaveCat),"click","");
 	}
 	
-	public void btnSaveCat() {
-		driver.findElement(btnSaveCat).click();
+	public void btnCloseCat() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddEmp));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddEmp),"click","");
 	}
 	
-	public void btnCloseCat() {
-		driver.findElement(btnCloseCat).click();
+	public void btnAddTF() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddTF));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddTF),"click","");
 	}
 	
-	public void btnAddTF() {
-		driver.findElement(btnAddTF).click();
+	public void btnTFName() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnTFName));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnTFName),"click","");
 	}
 	
-	public void btnTFName() {
-		driver.findElement(btnTFName).click();
+	public void btnAddTF1() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddTF1));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnAddTF1),"click","");
 	}
 	
-	public void btnAddTF1() {
-		driver.findElement(btnAddTF1).click();
+	public void btnSaveTF() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnSaveTF));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSaveTF),"click","");
 	}
 	
-	public void btnSaveTF() {
-		driver.findElement(btnSaveTF).click();
+	public void btnCloseTF() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnCloseTF));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnCloseTF),"click","");
 	}
 	
-	public void btnCloseTF() {
-		driver.findElement(btnCloseTF).click();
-	}
-	
-	public void btnSaveSubs() {
-		driver.findElement(btnSaveSubs).click();
+	public void btnSaveSubs() throws IOException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(btnSaveSubs));
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSaveSubs),"click","");
 	}
 	
 }

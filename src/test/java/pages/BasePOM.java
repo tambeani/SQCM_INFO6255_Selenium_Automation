@@ -11,15 +11,27 @@ public abstract class BasePOM {
 	
 	private WebDriver driver;
 	private Screenshot SS;
+	private String TS_NAME;
 	
 	public BasePOM(WebDriver driver) {
 		this.driver = driver;
 		SS = new Screenshot(driver);
+		this.TS_NAME = "undefined";
+	}
+	
+	public BasePOM(WebDriver driver,String TS_NAME) {
+		this.driver = driver;
+		SS = new Screenshot(driver);
+		this.TS_NAME = TS_NAME;
+	}
+	
+	public void setTsName(String TS_NAME) {
+		this.TS_NAME = TS_NAME;
 	}
 	
 	public String executeAction(String method,WebElement ele, String action, String text) throws IOException {
 		String ret = "";
-		SS.capture("\\before\\"+method);
+		SS.capture("\\before\\"+TS_NAME+"_"+method);
 		switch(action) {
 		case "click":
 			ele.click();
@@ -31,7 +43,7 @@ public abstract class BasePOM {
 			ret = ele.getAttribute(text);
 			break;
 		}
-		SS.capture("\\after\\"+method);
+		SS.capture("\\after\\"+TS_NAME+"_"+method);
 		return ret;
 	}
 	

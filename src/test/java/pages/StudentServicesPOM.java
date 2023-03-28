@@ -25,8 +25,8 @@ public class StudentServicesPOM extends BasePOM{
 
 	private WebDriver driver;
 	private WebDriverWait wait;
-	public StudentServicesPOM(WebDriver driver) {
-		super(driver);
+	public StudentServicesPOM(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}

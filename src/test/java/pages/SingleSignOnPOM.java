@@ -17,6 +17,12 @@ public class SingleSignOnPOM extends BasePOM {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
+	
+	public SingleSignOnPOM(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 30);
+	}
 
 	// ----------------------- Elements -----------------------------------
 

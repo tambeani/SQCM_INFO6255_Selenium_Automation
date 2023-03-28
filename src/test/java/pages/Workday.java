@@ -13,9 +13,8 @@ public class Workday extends BasePOM {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
-	public Workday(WebDriver driver) {
-
-		super(driver);
+	public Workday(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
@@ -31,17 +30,17 @@ public class Workday extends BasePOM {
 	By btnEmpName = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[2]/div[1]");
 	By btnAdd = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[2]/div[2]/a");
 	By btnSave = By.xpath("/html/body/div[2]/div/div/div/div[4]/button");
-	By btnClose = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
+	//By btnClose = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
 	By btnAddCat = By.xpath("/html/body/div[3]/div[6]/form/table[2]/tbody/tr[2]/td[2]/table/tbody/tr[3]/td/table/tbody/tr[2]/td[5]/button");
 	By btnCatName = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[2]/div[1]");
 	By btnAddCat1 = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[2]/div[2]/a");
 	By btnSaveCat = By.xpath("/html/body/div[2]/div/div/div/div[4]/button");
-	By btnCloseCat = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
+	//By btnCloseCat = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
 	By btnAddTF = By.xpath("/html/body/div[3]/div[6]/form/table[2]/tbody/tr[2]/td[2]/table/tbody/tr[3]/td/table/tbody/tr[3]/td[5]/button");
 	By btnTFName = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[3]/div[1]");
 	By btnAddTF1 = By.xpath("/html/body/div[2]/div/div/div/div[3]/div[2]/div[2]/a");
 	By btnSaveTF = By.xpath("/html/body/div[2]/div/div/div/div[4]/button");
-	By btnCloseTF = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
+	//By btnCloseTF = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/button");
 
 	By btnSaveSubs = By.xpath("/html/body/div[3]/div[6]/form/div[5]/input");
 
@@ -111,10 +110,10 @@ public class Workday extends BasePOM {
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSave), "click","");
 	}
 
-	public void btnClose() throws IOException {
-		wait.until(ExpectedConditions.elementToBeClickable(btnClose));
-		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnClose), "click","");
-	}
+//	public void btnClose() throws IOException {
+//		wait.until(ExpectedConditions.elementToBeClickable(btnClose));
+//		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnClose), "click","");
+//	}
 
 	public void btnAddCat() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnAddCat));
@@ -136,10 +135,10 @@ public class Workday extends BasePOM {
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSaveCat),"click", "");
 	}
 
-	public void btnCloseCat() throws IOException {
-		wait.until(ExpectedConditions.elementToBeClickable(btnCloseCat));
-		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnCloseCat), "click","");
-	}
+//	public void btnCloseCat() throws IOException {
+//		wait.until(ExpectedConditions.elementToBeClickable(btnCloseCat));
+//		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnCloseCat), "click","");
+//	}
 
 	public void btnAddTF() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnAddTF));
@@ -159,11 +158,6 @@ public class Workday extends BasePOM {
 	public void btnSaveTF() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(btnSaveTF));
 		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnSaveTF), "click","");
-	}
-
-	public void btnCloseTF() throws IOException {
-		wait.until(ExpectedConditions.elementToBeClickable(btnCloseTF));
-		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(btnCloseTF),"click","");
 	}
 
 	public void btnSaveSubs() throws IOException {

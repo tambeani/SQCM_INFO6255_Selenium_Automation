@@ -31,7 +31,7 @@ public abstract class BasePOM {
 	
 	public String executeAction(String method,WebElement ele, String action, String text) throws IOException {
 		String ret = "";
-		SS.capture("\\before\\"+TS_NAME+"_"+method);
+		SS.capture("\\before\\"+TS_NAME+"\\"+method);
 		switch(action) {
 		case "click":
 			ele.click();
@@ -42,9 +42,18 @@ public abstract class BasePOM {
 		case "getAttribute":
 			ret = ele.getAttribute(text);
 			break;
+		case "clear":
+			ele.clear();
+			break;
 		}
-		SS.capture("\\after\\"+TS_NAME+"_"+method);
+		SS.capture("\\after\\"+TS_NAME+"\\"+method);
 		return ret;
+	}
+	
+	public void closeWindow() throws IOException, InterruptedException {
+		Thread.sleep(5000);
+		SS.capture("\\after\\"+TS_NAME+"\\"+"WINDOW_CLOSE");
+		driver.quit();
 	}
 	
 }

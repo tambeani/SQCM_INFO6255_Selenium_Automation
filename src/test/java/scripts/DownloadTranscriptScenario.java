@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import junit.framework.Assert;
 import pages.SingleSignOnPOM;
 import pages.StudentHubPOM;
 import pages.StudentServicesPOM;
@@ -18,7 +20,8 @@ import utility.WindowSwitching;
 
 public class DownloadTranscriptScenario {
 
-	final String TS_NAME = "TS_DownloadTranscriptScenario";
+	private final String TS_NAME = "TS_DownloadTranscriptScenario";
+	private final String ASSERT_VAL1 = "https://neuidmsso.neu.edu/idp/profile/SAML2/Redirect/SSO?execution=e1s2";
 	private WebDriver driver;
 	private Screenshot SS;
 
@@ -67,8 +70,11 @@ public class DownloadTranscriptScenario {
 		// -------------------- Begin TC -------------------------------
 		// TS - 1: Load studenthub
 		stdhb.clickOnLogin();
+		
+		// ----- Assert 1 -----
+		Assert.assertTrue(ASSERT_VAL1.equals(driver.getCurrentUrl()));
 		SSOLogin(user, pass);
-
+		
 		// TS - 2: Click on close
 		stdhb.onClose();
 
@@ -89,7 +95,7 @@ public class DownloadTranscriptScenario {
 		srvStd.print();
 
 		// TS - 8: Close window
-		driver.quit();
+		srvStd.closeWindow();
 	}
 
 }

@@ -9,8 +9,8 @@ public class WorkdayPOM extends BasePOM{
 
 	WebDriver driver;
 	private WebDriverWait wait;
-	public WorkdayPOM(WebDriver driver) {
-		super(driver);
+	public WorkdayPOM(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait= new WebDriverWait(driver, 30);
 	}

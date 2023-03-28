@@ -15,8 +15,8 @@ public class DatasetPOM extends BasePOM{
 	private WebDriver driver;
 	private WebDriverWait wait;
 	
-	public DatasetPOM(WebDriver driver) {
-		super(driver);
+	public DatasetPOM(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}

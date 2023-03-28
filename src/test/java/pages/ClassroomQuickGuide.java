@@ -1,16 +1,19 @@
 package pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ClassroomQuickGuide {
+public class ClassroomQuickGuide extends BasePOM{
 
 	private WebDriver driver;
 	private WebDriverWait wait;
-	public ClassroomQuickGuide(WebDriver driver) {
+	public ClassroomQuickGuide(WebDriver driver,String TS_NAME) {
+		super(driver,TS_NAME);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 30);
 	}
@@ -28,13 +31,14 @@ public class ClassroomQuickGuide {
 		hitURL();
 	}	
 	
-	public void clickOnClassroomLink() {
+	public void clickOnClassroomLink() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(classroomLink));
-		driver.findElement(classroomLink).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(classroomLink),"click","");
 	}
 	
-	public void openQuickGuidePDF() {
+	public void openQuickGuidePDF() throws IOException {
 		wait.until(ExpectedConditions.elementToBeClickable(pdfLink));
-		driver.findElement(pdfLink).click();
+		executeAction(Thread.currentThread().getStackTrace()[1].getMethodName(), driver.findElement(pdfLink),"click","");
 	}
+	
 }

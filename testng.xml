@@ -3,8 +3,10 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
+      <class name="scripts.AddTaskToCalendar"/>
       <class name="scripts.DownloadQuickGuide"/>
       <class name="scripts.DownloadDatasetScenario"/>
+      <class name="scripts.WorkdayScenario"/>
       <class name="scripts.DownloadTranscriptScenario"/>
     </classes>
   </test> <!-- Test -->

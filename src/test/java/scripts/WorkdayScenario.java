@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import pages.SingleSignOnPOM;
 import pages.Workday;
-import utility.ReadFromExcel;
+import utility.*;
 import pages.WorkdayPOM;
 
 public class WorkdayScenario {
@@ -40,6 +40,8 @@ public class WorkdayScenario {
 		Workday stdwd = new Workday(driver);
 		SingleSignOnPOM sso = new SingleSignOnPOM(driver);
 		WorkdayPOM id = new WorkdayPOM(driver);
+		
+		WindowSwitching ws =new WindowSwitching(driver);
 
 		// TS - 1: Load canvas
 		stdwd.clickOnLogin();
@@ -63,6 +65,7 @@ public class WorkdayScenario {
 		
 		//TS - 6: Click Students
 		Thread.sleep(3000);
+		ws.changeWindow();
 		stdwd.btnStudent();
 		
 		//TS - 7: Click My Job Mail
@@ -75,6 +78,32 @@ public class WorkdayScenario {
 		id.setPassword(pass);
 		
 		//TS -10 : Click Login
-		stdwd.btnLogin();
+		id.btnLogin();
+		
+		//TS -11 : Click Add Employee
+		stdwd.btnAddEmp();
+		stdwd.btnEmpName();
+		stdwd.btnAdd();
+		stdwd.btnSave();
+		stdwd.btnClose();
+		
+		//TS -12 : Click Add Category
+		stdwd.btnAddCat();
+		stdwd.btnCatName();
+		stdwd.btnAddCat1();
+		stdwd.btnSaveCat();
+		stdwd.btnCloseCat();
+		
+		//TS -13 : Click Add  Time Frame
+		stdwd.btnAddTF();
+		stdwd.btnTFName();
+		stdwd.btnAddTF1();
+		stdwd.btnSaveTF();
+		stdwd.btnCloseTF();
+		
+		//TS -14 : Click Save Subscription
+		stdwd.btnSaveSubs();
+		
+		
 	}
 }

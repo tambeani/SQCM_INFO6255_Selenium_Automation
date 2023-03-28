@@ -13,9 +13,9 @@ public class WorkdayPOM {
 	// ----------------------- Elements -----------------------------------
 	
 	final String URL = "https://neu.studentemployment.ngwebsolutions.com/jobx_myjobmail.aspx";
-	By txtUsername = By.id("username");
-	By txtPassword = By.id("password");
-	
+	By txtUsername = By.id("Skin_ctl11_LoginNameText");
+	By txtPassword = By.id("Skin_ctl11_LoginPasswordText");
+	By btnLogin = By.xpath("/html/body/div[3]/div[6]/form/table[1]/tbody/tr[4]/td[2]/input");
 	
 	public void setUsername(String user) {
 		driver.findElement(txtUsername).sendKeys(user);
@@ -24,4 +24,7 @@ public class WorkdayPOM {
 		driver.findElement(txtPassword).sendKeys(pass);
 	}
 	
+	public void btnLogin() {
+		driver.findElement(btnLogin).click();
+	}
 }

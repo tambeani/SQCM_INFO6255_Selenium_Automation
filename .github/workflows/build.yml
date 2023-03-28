@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Test with Maven
-      run: mvn test-compile
+      run: mvn org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

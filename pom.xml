@@ -50,6 +50,11 @@
 			<artifactId>html2pdf</artifactId>
 			<version>4.0.5</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.13.6</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>
